@@ -17,7 +17,7 @@ firebase.initializeApp({
     },
 // Come faccio ad avere :id?
     getPerson: function () {
-      return axios.get("https://swapi.dev/api/people/:id/");
+      return axios.get("https://swapi.dev/api/people/" + people.id );
     },
 // Search non funziona - questo è copiato dal progetto dei prof
     searchPerson: function (term) {

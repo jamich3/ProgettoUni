@@ -3,7 +3,7 @@
     <v-main>
      <Navigation/>
       <router-view>
-      <List/>
+        <List/>
       </router-view>
     </v-main>
   </v-app>

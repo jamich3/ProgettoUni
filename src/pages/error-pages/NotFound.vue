@@ -7,7 +7,7 @@
               height="220px"
               src="https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
             ></v-img>
-            <v-card-title>Oh no, you are in the wrong galaxy! :(</v-card-title>
+            <v-card-title>Non sono questi i droidi che state cercando :(</v-card-title>
             <v-card-text>
 
               <div class="mx-auto text-subtitle-1">404 error</div>

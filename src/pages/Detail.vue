@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout" v-if="person">
-   <p>Title</p>
+    <div class="grey--text mb-2">Gender: {{ person.gender }}</div>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     };
   },
   methods: {
-    load: function () {
+    created: function () {
       DataService.getPerson(this.$route.params.name).then((data) => {
         this.person = data.data;
       });

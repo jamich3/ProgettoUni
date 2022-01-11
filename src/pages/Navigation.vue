@@ -5,7 +5,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <v-row class="fill-height" no-gutters>
-    <v-toolbar app light clipped-left color="primary">
+    <v-toolbar app light  color="primary">
       <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="mr-5 text-uppercase">
         <router-link :to="'/'">
@@ -21,7 +21,6 @@
           flat
           prepend-inner-icon="mdi-magnify white--text"
           label="Search name..."
-          v-model="query"
           @keyup.enter="name()"
           ></v-text-field>
     </v-toolbar>
@@ -46,14 +45,8 @@
 <!-- Voci del menu, ma cliccandoci sopra la pagina non cambia =( -->
 
       <v-list>
-        <v-list-item v-for="(item, index) in drawerItems" :key="index" link>
-          <v-list-tile
-            v-for="(item, index) in item.tiles"
-            :key="index"
-            :to="item.route"
-            router
-          >
-
+        <v-list-item v-for="(item, index) in menu" :key="index" :to="item.route" link style="text-decoration:none;">
+          <v-list-tile>
             <v-list-tile-action>
               <v-icon style="margin: 8px" color="white">{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -77,19 +70,11 @@ export default {
   data() {
     return {
       drawer: false,
-      drawerItems: {
-        // voci del menù
-        firstChunk: {
-          tiles: [
+      menu:         
+            [
             { title: "SW Characters", icon: "mdi-star", route: '/' },
-          ],
-        },
-        secondChunk: {
-          tiles: [
             { title: "Project", icon: "article", route: '/about' }],
-        },
-      },
-    };
-  },
+      }
+    }
   }
 </script>

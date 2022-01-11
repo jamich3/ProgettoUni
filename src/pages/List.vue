@@ -3,7 +3,7 @@
   <div>
     <v-flex d-flex>
       <v-layout wrap>
-        <v-flex md4 v-for="person in people" :key="person.id">
+        <v-flex md4 v-for="person in people" :key="person.name">
           <v-card :loading="loading" class="mx-auto my-10" max-width="374">
             <v-img
               height="200"
@@ -57,7 +57,13 @@ export default {
   created:
     function () {
       DataService.getPeople(this.page).then((data) => {
-      this.people = data.data.results;
+        let people = data.data.results
+        people.map( people => {
+          let urlPicies= people.url.split('/');
+          return people.id = urlPicies[ urlPicies.length -2];
+        })
+        this.people = people;
+
       });
     },
     methods: {
