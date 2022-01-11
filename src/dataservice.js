@@ -9,7 +9,6 @@ firebase.initializeApp({
   projectId: "informatica2-31173"
 });
 
-
   export default {
 // Serve valore della pagina (che dovrebbe essere dato dalla paginazione) non so come fare
     getPeople: function (page) {

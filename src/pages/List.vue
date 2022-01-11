@@ -3,8 +3,8 @@
   <div>
     <v-flex d-flex>
       <v-layout wrap>
-        <v-flex md4 v-for="person in people" :key="person.name">
-          <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+        <v-flex md4 v-for="person in people" :key="person.id">
+          <v-card :loading="loading" class="mx-auto my-10" max-width="374">
             <v-img
               height="200"
               src="https://images.pexels.com/photos/6320588/pexels-photo-6320588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
@@ -18,19 +18,16 @@
 
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-          <router-link :to="'/detail/' + person.name">
-            <v-btn elevatio="2" text color="primary">
+          <router-link :to="'/detail/' + person.id">
+            <v-btn text color="primary">
               Dettagli
             </v-btn>
           </router-link>
-
             </v-card-actions>
           </v-card>
         </v-flex>
-      </v-layout>
-    </v-flex>
-  </div>
-  <flex>
+
+<!-- Paginazione -->
       <v-flex>
         <div class="text-center">
           <v-pagination
@@ -39,8 +36,10 @@
           ></v-pagination>
       </div>
     </v-flex>
-  </flex>
 
+      </v-layout>
+    </v-flex>
+  </div>
 </div>
 </template>
 

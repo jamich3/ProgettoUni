@@ -4,10 +4,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-         <v-row
-        class="fill-height"
-        no-gutters
-      >
+    <v-row class="fill-height" no-gutters>
     <v-toolbar app light clipped-left color="primary">
       <v-app-bar-nav-icon class="white--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="mr-5 text-uppercase">
@@ -45,10 +42,10 @@
           <span class="font-weight-black white--text">WARS</span>
         </v-toolbar>
     </v-container>
-    
+
 <!-- Voci del menu, ma cliccandoci sopra la pagina non cambia =( -->
 
-      <v-list> 
+      <v-list>
         <v-list-item v-for="(item, index) in drawerItems" :key="index" link>
           <v-list-tile
             v-for="(item, index) in item.tiles"
@@ -69,7 +66,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <router-view></router-view>
+<!-- There was the PROBLEM router-view was here =( -->
   </div>
 </template>
 
