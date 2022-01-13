@@ -1,47 +1,54 @@
 <template>
-<div>
-<v-app wrap>
-        <v-flex md4 align="center" color="primary">
-          <v-card class="mx-auto my-12" max-width="400">
-            <v-img
-              height="220px"
-              src="https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            ></v-img>
-            <v-card-title>Non sono questi i droidi che state cercando :(</v-card-title>
-            <v-card-text>
+  <div id="error_page">
+    <v-container wrap>
+      <v-row align="center" justify="center">
+        <v-col>
+          <v-sheet
+            class="px-4 py-4"
+            dark
+            elevation="1"
+            height="500"
+            rounded
+            width="100%"
+            align="center"
+            justify="center"
+          >
+<!--        <iframe  src="https://giphy.com/embed/3o84sF21zQYacFcl68" width="100%" align="center" frameBorder="0" class="px-4 pt-4 py-15" allowFullScreen></iframe> -->
+<!--        <iframe src="https://giphy.com/embed/UOpdmwKA7la0g" width="100%" frameBorder="0" class="px-4 pt-4 py-15" allowFullScreen></iframe> -->
+            <iframe src="https://giphy.com/embed/gqztW5MLVNnFe" width="100%" frameBorder="0" class="px-4 pt-4 py-10" allowFullScreen></iframe>
+            <div id="error">404 ERROR</div>
+            <div id="droids" class="px-4 pb-15">Non sono questi i droidi che state cercando :(</div>
 
-              <div class="mx-auto text-subtitle-1">404 error</div>
-            </v-card-text>
-           <v-card-actions>
-
-          <router-link :to="'/'">
-
-    <v-btn
-      block
-      color="primary"
-    >
-      <v-icon left>
-        mdi-home
-      </v-icon>
-      Back home
-    </v-btn>
-          </router-link>
+              <router-link :to="'/'">
+                <div class="px-12">
+                  <v-btn block  color="primary">
+                    <v-icon left>mdi-home</v-icon>Back home
+                  </v-btn>
+                </div>
+              </router-link>
  
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </v-app>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
   </div>
 </template>
+
 
 <script>
 export default {
   name: "NotFound",
-  created: function () {
-    document.body.style.backgroundColor = "orange";
-  },
-  destroyed: function () {
-    document.body.style.backgroundColor = null;
-  },
 };
 </script>
+
+<style lang="scss">
+#error {
+  font-weight: 700;
+  font-size: 38px;
+}
+#droids {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(114, 114, 114);
+}
+</style>

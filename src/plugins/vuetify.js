@@ -15,11 +15,11 @@ export default new Vuetify({
     },
 
     theme: {
-        dark: false,
+        dark: true,
         themes: {
-            light: {
-                primary: '#023e8a',
-                secondary: '#087e65',
+            dark: {
+                primary: '#121210',
+                secondary: '#FFE81F',
                 accent: '#8c9eff',
                 error: '#b71c1c',
             },
