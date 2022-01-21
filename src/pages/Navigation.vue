@@ -24,6 +24,9 @@
           id="nottoowhite"
           class="secondary--text"
           prepend-inner-icon="mdi-magnify secondary--text"
+          v-model="selectedPerson"
+          @changed="search"
+          @click="select"
           placeholder="Search name..."
           @keyup.enter="name()"
         ></v-text-field>
@@ -65,19 +68,30 @@
 </template>
 
 <script>
+import DataService from "../dataservice";
 
 export default {
   name: "Navigation",
   data() {
     return {
+      selectedPerson: null,
       drawer: false,
       menu:         
             [
             { title: "Characters", icon: "mdi-star", route: '/' },
             { title: "Project", icon: "article", route: '/about' }],
       }
-    }
-  }
+    },
+    methods: {
+    search: function (term) {
+      this.options = DataService.searchPerson(term);
+    },
+    select: function (selected) {
+      if (selected === this.$route.params.name) {
+        return;
+      }
+      this.$router.push({ path: "/detail/" + selected });
+    },
+  },
+}
 </script>
-
-ffbe0b

@@ -1,6 +1,57 @@
-<template>
-  <div class="md-layout" v-if="person">
-    <div class="grey--text mb-2">Gender: {{ person.gender }}</div>
+<template >
+<!-- V-IF va con ID oppure con PERSON? -->
+  <div id="about" v-if="person">
+    <v-container>
+      <v-layout wrap>
+          <v-sheet
+            class="px-10 py-8 mt-7"
+            rounded
+            width="100%"
+            align="left"
+            justify="center"
+          >
+          
+            <div id="nottoowhite" class="font-weight-medium mt-7 mb-0">Name:</div>
+            <span id="titleabout" class="font-weight-bold white--text">{{ person.name }}</span>
+    <div class="px-4 py-5 mt-7">
+      <v-simple-table dark>
+          <thead>
+            <tr>
+              <th class="text-left"> Characteristics </th>
+              <th class="text-left"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Birthday</td>
+              <td>{{ person.birth_year }}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{{ person.gender }}</td>
+            </tr>
+            <tr>
+              <td>Eye color</td>
+              <td>{{ person.eye_color }}</td>
+            </tr>
+            <tr>
+              <td>Hair color</td>
+              <td>{{ person.hair_color }}</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td>{{ person.height }} cm</td>
+            </tr>
+            <tr>
+              <td>Mass</td>
+              <td>{{ person.mass }} kg</td>
+            </tr>            
+          </tbody>
+      </v-simple-table>
+    </div>
+          </v-sheet>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -15,11 +66,11 @@ export default {
     };
   },
   methods: {
-    created: function () {
-      DataService.getPerson(this.$route.params.name).then((data) => {
+    load: function () {
+      DataService.getPerson(this.$route.params.id).then((data) => {
         this.person = data.data;
       });
-      DataService.getStats(this.$route.params.name).then((stats) => {
+      DataService.getStats(this.$route.params.id).then((stats) => {
         this.stats = stats;
       });
     },

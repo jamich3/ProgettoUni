@@ -3,7 +3,7 @@
     <v-container>
       <v-layout wrap>
           <v-sheet
-            class="px-10 py-10"
+            class="px-10 py-10 mt-7"
             rounded
             width="100%"
             align="left"

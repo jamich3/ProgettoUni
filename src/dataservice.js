@@ -22,14 +22,14 @@ var db = firebase.firestore();
     logout: function () {
       localStorage.removeItem("username");
     },
-// Serve valore della pagina (che dovrebbe essere dato dalla paginazione) non so come fare
-    getPeople: function (page) {
-      return axios.get("https://swapi.dev/api/people/?page=" + page
+// Non mi legge il pvalue --> in LIST, nella paginazione
+    getPeople: function (pvalue) {
+      return axios.get("https://swapi.dev/api/people/?page=" + pvalue
       );
     },
-// Come faccio ad avere :id?
+// QUESTO FUNZIONA
     getPerson: function (id) {
-      return axios.get("https://swapi.dev/api/people/" + id );
+      return axios.get("https://swapi.dev/api/people/" + id + "/");
     },
 // Search non funziona - questo è copiato dal progetto dei prof
     searchPerson: function (term) {
@@ -38,21 +38,6 @@ var db = firebase.firestore();
         resolve([]);
       });
     }
-// Questo non funziona - SWAPI ragiona per pagine già divise:
-// ha come attributi 	"next": "https://swapi.dev/api/people/?page=2", e "previous"..
-    return axios
-      .get("https://swapi.dev/api/people/?page=" )
-      .then((data) => {
-        var result = [];
-        for (var i = 0; i < data.data.results.length; i++) {
-          var person = data.data.results[i];
-          var name = person.name;
-          if (name.indexOf(term) >= 0) {
-            result.push(name);
-          }
-        }
-        return result;
-      });
     },
 //Cose per mettere voto a personaggi star wars
   vote: function (name, value) {

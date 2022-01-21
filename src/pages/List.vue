@@ -12,7 +12,7 @@
               <v-card-title id="nottoowhite">{{ person.name }}</v-card-title>
                 <v-card-text>
                   <v-row align="center" class="mx-0">
-                    <div class="grey--text mb-2">Gender: {{ person.gender }}</div>
+                    <div class="grey--text mb-2" >Gender: {{ person.gender }}</div>
                   </v-row>
                 </v-card-text>
 
@@ -27,17 +27,19 @@
           </v-flex>
         </v-layout>
       </v-flex>
-      <!-- Paginazione -->
 
+      <!-- Paginazione -->
           <v-flex style="margin: 45px">
             <div class="text-center">
               <v-pagination
                 class="nottoowhite"
                 v-model="page"
-                :length="3"
+                :length="8"
+                @input="handlePageChange"
               ></v-pagination>
             </div>
           </v-flex>
+
     </div>
   </div>
 </template>
@@ -51,7 +53,8 @@ export default {
     return {
       people: null,
       loading: false,
-      page: 1,    };  //Page è = sia per la paginazione che per la funzione qui sotto
+      page: "",
+      };  //Se si cambia questo valore cambia la pagina/ lista di personaggi
   },
   created:
     function () {
@@ -62,18 +65,13 @@ export default {
           return people.id = urlPicies[ urlPicies.length -2];
         })
         this.people = people;
-
       });
     },
-    methods: {
-    loadMore: function () {
-      this.page += 1;
-      this.loading = true;
-      DataService.getPeople(this.page).then((data) => {
-        this.people = this.people.concat(data.data.results);
-        this.loading = false;
-      });
-    }
-  }
-  };
+  methods: {
+    handlePageChange(pvalue) {
+      this.page = pvalue;
+      console.log(this.page)
+    },
+  },
+};
 </script>
