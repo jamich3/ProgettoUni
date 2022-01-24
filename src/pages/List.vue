@@ -29,16 +29,18 @@
       </v-flex>
 
       <!-- Paginazione -->
-          <v-flex style="margin: 45px">
-            <div class="text-center">
-              <v-pagination
-                class="nottoowhite"
-                v-model="page"
-                :length="8"
-                @input="handlePageChange"
-              ></v-pagination>
-            </div>
-          </v-flex>
+      <v-flex style="margin: 45px">
+        <div class="text-center">
+          <v-pagination
+            class="nottoowhite"
+            v-model="page"
+            :length="length"
+            @next="nextPage"
+            @previous="previousPage"
+            @input="onChangePage"
+          ></v-pagination>
+        </div>
+      </v-flex>
 
     </div>
   </div>
@@ -53,8 +55,9 @@ export default {
     return {
       people: null,
       loading: false,
-      page: "",
-      };  //Se si cambia questo valore cambia la pagina/ lista di personaggi
+      page: 1,
+      length: 5, //Se si cambia questo valore cambia la pagina/lista di personaggi
+      }; 
   },
   created:
     function () {
@@ -68,10 +71,46 @@ export default {
       });
     },
   methods: {
-    handlePageChange(pvalue) {
-      this.page = pvalue;
-      console.log(this.page)
+    nextPage() {
+      console.log(this.length)
+      if (this.page + 1 <= this.length) {
+        this.page = this.page + 1;
+        DataService.getPeople(this.page).then((data) => {
+        let people = data.data.results
+        people.map( people => {
+          let urlPicies= people.url.split('/');
+          return people.id = urlPicies[ urlPicies.length -2];
+        })
+        this.people = people;
+      });
+      }
     },
+      previousPage() {
+      console.log(this.length)
+      if (this.page >= 0) {
+        this.page = this.page - 1;
+        DataService.getPeople(this.page).then((data) => {
+        let people = data.data.results
+        people.map( people => {
+          let urlPicies= people.url.split('/');
+          return people.id = urlPicies[ urlPicies.length -2];
+        })
+        this.people = people;
+      });
+      }
+    },
+    onChangePage(selectedPage) {
+      if ((selectedPage >= 0) && (selectedPage <= this.length)) {
+      DataService.getPeople(selectedPage).then((data) => {
+        let people = data.data.results
+        people.map( people => {
+          let urlPicies= people.url.split('/');
+          return people.id = urlPicies[ urlPicies.length -2];
+        })
+        this.people = people;
+      });
+      }
+    }
   },
 };
 </script>

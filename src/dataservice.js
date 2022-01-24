@@ -4,9 +4,13 @@ import "@firebase/firestore";
 
 // Firebase ancora non utilizzato
 firebase.initializeApp({
-  apiKey: "AIzaSyAghYvrizuR7oBSLMK9AOZlq_7ya_haYFQ",
-  authDomain: "informatica2-31173.firebaseapp.com",
-  projectId: "informatica2-31173"
+  apiKey: "AIzaSyCYXDK-8fDdA5PFmPJ2LaIaIsSBtUv5mqo",
+  authDomain: "swproject-65566.firebaseapp.com",
+  projectId: "swproject-65566",
+  storageBucket: "swproject-65566.appspot.com",
+  messagingSenderId: "337150494930",
+  appId: "1:337150494930:web:9983cc256ba92f4cf8050b",
+  measurementId: "G-HTE8J0W0X7"
 });
 
 var db = firebase.firestore();
@@ -23,9 +27,8 @@ var db = firebase.firestore();
       localStorage.removeItem("username");
     },
 // Non mi legge il pvalue --> in LIST, nella paginazione
-    getPeople: function (pvalue) {
-      return axios.get("https://swapi.dev/api/people/?page=" + pvalue
-      );
+    getPeople: function (page) {
+      return axios.get("https://swapi.dev/api/people/?page=" + page);
     },
 // QUESTO FUNZIONA
     getPerson: function (id) {
@@ -39,21 +42,21 @@ var db = firebase.firestore();
       });
     }
     },
-//Cose per mettere voto a personaggi star wars
-  vote: function (name, value) {
+//Rating stars per personaggi
+  vote: function (id, value) {
     return db
       .collection("voti")
       .doc()
       .set({
         voto: value,
-        pokemon: name,
+        id_person: id,
         username: localStorage.getItem("username")
       });
   },
-  getStats: function (name) {
+  getStats: function (id) {
     return db
       .collection("voti")
-      .where("pokemon", "==", name)
+      .where("id_person", "==", id)
       .get()
       .then((data) => {
         let sum = 0;
@@ -68,7 +71,7 @@ var db = firebase.firestore();
         return {
           totalCount: data.size,
           userVote: userVote,
-          average: data.size === 0 ? 0 : sum / data.size
+          average: data.size === 0 ? 3 : sum / data.size
         };
       });
   }

@@ -58,6 +58,7 @@ export default {
     login: function () {
       DataService.login(this.username);
       this.$router.push("/");
+      console.log(this.username)
     },
   },
 };
