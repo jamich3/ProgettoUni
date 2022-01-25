@@ -1,20 +1,20 @@
 <template>
   <v-app id="app">
     <v-main>
-     <Navigation/>
+      <Navigation />
       <router-view>
-        <List/>
+        <List />
       </router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Navigation from './pages/Navigation';
-import List from './pages/List';
+import Navigation from "./pages/Navigation";
+import List from "./pages/List";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Navigation,
     List,

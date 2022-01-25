@@ -2,7 +2,7 @@ import axios from "axios";
 import firebase from "@firebase/app";
 import "@firebase/firestore";
 
-// Firebase ancora non utilizzato
+// Firebase
 firebase.initializeApp({
   apiKey: "AIzaSyCYXDK-8fDdA5PFmPJ2LaIaIsSBtUv5mqo",
   authDomain: "swproject-65566.firebaseapp.com",
@@ -15,34 +15,26 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-  export default {
-//Login things ------------
-    isAuthenticated: function () {
-      return !!localStorage.getItem("username");
-    },
-    login: function (username) {
-      localStorage.setItem("username", username);
-    },
-    logout: function () {
-      localStorage.removeItem("username");
-    },
-// Non mi legge il pvalue --> in LIST, nella paginazione
-    getPeople: function (page) {
-      return axios.get("https://swapi.dev/api/people/?page=" + page);
-    },
-// QUESTO FUNZIONA
-    getPerson: function (id) {
-      return axios.get("https://swapi.dev/api/people/" + id + "/");
-    },
-// Search non funziona - questo è copiato dal progetto dei prof
-    searchPerson: function (term) {
-    if (!term || term.length < 3) {
-      return new Promise((resolve) => {
-        resolve([]);
-      });
-    }
-    },
-//Rating stars per personaggi
+export default {
+  //Login
+  isAuthenticated: function () {
+    return !!localStorage.getItem("username");
+  },
+  login: function (username) {
+    localStorage.setItem("username", username);
+  },
+  logout: function () {
+    localStorage.removeItem("username");
+  },
+  // Lista di personaggi in base alla pagina
+  getPeople: function (page) {
+    return axios.get("https://swapi.dev/api/people/?page=" + page);
+  },
+  // Per ottenere informazioni del personaggio in Detail
+  getPerson: function (id) {
+    return axios.get("https://swapi.dev/api/people/" + id + "/");
+  },
+  //Rating stars per personaggi
   vote: function (id, value) {
     return db
       .collection("voti")
@@ -71,7 +63,7 @@ var db = firebase.firestore();
         return {
           totalCount: data.size,
           userVote: userVote,
-          average: data.size === 0 ? 3 : sum / data.size
+          average: data.size === 0 ? 0 : sum / data.size
         };
       });
   }

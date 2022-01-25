@@ -76,22 +76,21 @@ export default {
     return {
       person: null,
       id: null,
-      stats: { average: null, totalCount: null, userVote: null,  },
+      stats: { average: null, totalCount: null, userVote: null },
       rating: null,
     };
   },
   methods: {
     load: function () {
-     DataService.getPerson(this.$route.params.id).then((data) => {
-       this.person = data.data;
-     });
+      DataService.getPerson(this.$route.params.id).then((data) => {
+        this.person = data.data;
+      });
       DataService.getStats(this.$route.params.id).then((stats) => {
         this.stats = stats;
       });
     },
-    change: function() {
+    change: function () {
       DataService.vote(this.$route.params.id, this.rating);
-      console.log("ciao")
     },
     loadVote: function () {
       return this.stats;

@@ -13,24 +13,30 @@
             align="center"
             justify="center"
           >
-<!--        <iframe  src="https://giphy.com/embed/3o84sF21zQYacFcl68" width="100%" align="center" frameBorder="0" class="px-4 pt-4 py-15" allowFullScreen></iframe> -->
-<!--        <iframe src="https://giphy.com/embed/UOpdmwKA7la0g" width="100%" frameBorder="0" class="px-4 pt-4 py-15" allowFullScreen></iframe> -->
-            <iframe src="https://giphy.com/embed/gqztW5MLVNnFe" width="100%" frameBorder="0" class="px-4 pt-4 py-10" allowFullScreen></iframe>
+            <iframe
+              src="https://giphy.com/embed/gqztW5MLVNnFe"
+              width="100%"
+              frameBorder="0"
+              class="px-4 pt-4 py-10"
+              allowFullScreen
+            ></iframe>
             <div id="error">404 ERROR</div>
-            <div id="droids" class="px-4 pb-15">Non sono questi i droidi che state cercando :(</div>
+            <div id="droids" class="px-4 pb-15">
+              Non sono questi i droidi che state cercando :(
+            </div>
 
-              <router-link :to="'/'">
-                <div class="px-12">
-                  <v-btn block  color="primary">
-                    <v-icon left>mdi-home</v-icon>Back home
-                  </v-btn>
-                </div>
-              </router-link>
- 
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </v-container>
+            <router-link :to="'/'">
+              <div class="px-12">
+                <v-btn block color="primary">
+                  <v-icon left>mdi-home</v-icon>Back home
+                </v-btn>
+              </div>
+            </router-link>
+            
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
