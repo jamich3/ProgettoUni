@@ -1,11 +1,7 @@
 <template>
   <div id="navigation">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <v-row class="fill-height" no-gutters>
-      <v-toolbar app light color="primary">
+      <v-toolbar light color="primary">
         <v-app-bar-nav-icon
           class="secondary--text"
           @click.stop="drawer = !drawer"
@@ -20,7 +16,7 @@
       </v-toolbar>
     </v-row>
 
-    <!-- Navigation drawer here -->
+<!-- Navigation drawer, chiuso di default -->
     <v-navigation-drawer dark app v-model="drawer" left class="pb-0 primary">
       <v-container ma-0 pa-0>
         <v-toolbar color="primary" flat>
@@ -37,19 +33,18 @@
           link
           style="text-decoration: none"
         >
-          <v-list-tile>
-            <v-list-tile-action>
-              <v-icon style="margin: 8px" color="secondary">{{
-                item.icon
-              }}</v-icon>
-            </v-list-tile-action>
-
-            <v-list-tile-content class="sidemenu-item">
-              <v-list-tile-title id="nottoowhite">{{
+<!-- ICONE DEL Navigation drawer -->
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon color="secondary">{{ item.icon }}</v-icon>
+            </v-list-item-action>
+<!-- VOCI DEL Navigation drawer -->
+            <v-list-item-content class="sidemenu-item">
+              <v-list-item-title id="nottoowhite">{{
                 item.title
-              }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -57,30 +52,16 @@
 </template>
 
 <script>
-import DataService from "../dataservice";
-
 export default {
   name: "Navigation",
   data() {
     return {
-      selectedPerson: null,
       drawer: false,
       menu: [
         { title: "Characters", icon: "mdi-star", route: "/" },
         { title: "Project", icon: "article", route: "/about" },
       ],
     };
-  },
-  methods: {
-    search: function (term) {
-      this.options = DataService.searchPerson(term);
-    },
-    select: function (selected) {
-      if (selected === this.$route.params.name) {
-        return;
-      }
-      this.$router.push({ path: "/detail/" + selected });
-    },
   },
 };
 </script>

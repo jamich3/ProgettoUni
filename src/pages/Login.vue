@@ -1,5 +1,4 @@
 <template>
-  <div id="app">
     <v-app
       :class="{ 'pa-3': $vuetify.breakpoint.smAndUp }"
       :dark="darkTheme"
@@ -48,7 +47,6 @@
         </v-layout>
       </v-container>
     </v-app>
-  </div>
 </template>
 
 <script>

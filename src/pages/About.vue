@@ -10,22 +10,32 @@
           justify="center"
         >
           <span id="titleabout" class="font-weight-bold secondary--text"
-            >About this project</span>
+            >About this project</span
+          >
 
-          <div id="nottoowhite" class="font-weight-medium mt-7 mb-2">
-            I REQUISITI DEL PROGETTO
-          </div>
-          <p id="nottoowhite" class="text-justify">
-            Questo progetto è stato realizzato per passare un esame e laurearsi
-            (si spera). <br />
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum."
+          <p id="nottoowhite" class="text-justify mb-12 mt-4">
+            Questo progetto è stato realizzato per l'esame di Informatica ed
+            elementi di programmazione II. <br />
           </p>
+
+          <div id="nottoowhite" class="font-weight-bold mb-2"
+            >Linguaggi:</div
+          >
+
+          <v-btn id="nottoowhite" class="ma-2">
+            <v-icon left dark color="#20A4F3"> circle </v-icon>
+            75.5% Vue
+          </v-btn>
+
+          <v-btn id="nottoowhite" color="light-pink" class="ma-2">
+            <v-icon left dark color="#00A676"> circle </v-icon>
+            20.0% JavaScript
+          </v-btn>
+
+          <v-btn id="nottoowhite" class="ma-2">
+            <v-icon left dark color="#FF9F1C"> circle </v-icon>
+            4.4% HTML
+          </v-btn>
         </v-sheet>
       </v-layout>
     </v-container>
@@ -40,7 +50,7 @@ export default {
 
 <style lang="scss">
 #titleabout {
-  font-size: 1.8em;
+  font-size: 1.9em;
 }
 #nottoowhite {
   color: rgb(194, 194, 194);
